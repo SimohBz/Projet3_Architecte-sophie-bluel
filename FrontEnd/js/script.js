@@ -1,25 +1,38 @@
-const url = "http://localhost:5678/api/works"
-const container = document.getElementById("portfolio")
-
+//récuperation des Traveaux
+const urlWorks = "http://localhost:5678/api/works"
+const works = document.getElementById("works")
 const getWorks = () => {
-    fetch (url)
-    .then (function (response){
+    fetch (urlWorks)
+    .then (function (response) {
         return response.json()
     })
-
     .then(function (data) {
         console.log(data)
         for (work in data) {
-            container.innerHTML += `<a href= "#">
-            <figure>
+            works.innerHTML += `<figure>
                 <img src="${data[work].imageUrl}" alt="${data[work].category}">
                 <figcaption>${data[work].title}</figcaption>
-            </figure>
+            </figure>`
+        }
+    })
+}
+getWorks()
+
+//récuperation des Categories
+const urlCategories = "http://localhost:5678/api/categories"
+const categories = document.getElementById("categories")
+const getCategories = () => {
+    fetch (urlCategories)
+    .then (function (response) {
+        return response.json()
+    })
+    .then(function (data) {
+        console.log(data)
+        for (work in data) {
+            categories.innerHTML += `<a href= "#"> ${data[work].name}
             </a>`
         }
-
     })
-
 }
+getCategories()
 
-getWorks()

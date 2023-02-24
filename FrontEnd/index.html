@@ -35,11 +35,18 @@
 		</article>
 	</section>
 
-	<!--récupération dynamique des projets par l'appel de l'API avec fetch-->
+<!--récupération dynamique des Categories et projets par l'appel de l'API avec fetch et ajout d'1'bouton de filtre-->
 	<section id="portfolio">
 		<h2>Mes Projets</h2>
+		<div id="categories">
+			<button class="btn active" onclick="filterSelection('all')">Tous</button>
+			<button class="btn" onclick="filterSelection('1')">Objets</button>
+            <button class="btn" onclick="filterSelection('2')">Appartements</button>
+            <button class="btn" onclick="filterSelection('3')">Hotels & restaurants</button>
+		</div>
+		<div class="gallery" id="works"> 
+		</div>
 	</section>
-	
 	<section id="contact">
 		<h2>Contact</h2>
 		<p>Vous avez un projet ? Discutons-en !</p>
@@ -63,5 +70,6 @@
 	</nav>
 </footer>
 <script src="../FrontEnd/js/script.js"></script>
+<script src="../FrontEnd/js/filters.js"></script>
 </body>
 </html>
