@@ -214,7 +214,8 @@ body{
 } 
 
 #categories .btn:hover {
-	background-color: lightgray;
+	background-color: #1D6154;
+	color: white;
   }
   
 #categories .btn.active {

@@ -8,7 +8,7 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
 	<meta name="description" content="">
-	<link rel="stylesheet" href="./assets/style.css">
+	<link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
 <header>
@@ -18,14 +18,14 @@
 			<li>projets</li>
 			<li>contact</li>
 			<li>login</li>
-			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
+			<li><img src="assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
 	</nav>
 </header>
 <main>
 	<section id="introduction">
 		<figure>
-			<img src="./assets/images/sophie-bluel.png" alt="">
+			<img src="assets/images/sophie-bluel.png" alt="">
 		</figure>
 		<article>
 			<h2>Designer d'espace</h2>
@@ -35,14 +35,11 @@
 		</article>
 	</section>
 
-<!--récupération dynamique des Categories et projets par l'appel de l'API avec fetch et ajout d'1'bouton de filtre-->
+<!--récupération dynamique des Categories et projets par l'appel de l'API avec fetch (Suppression des travaux qui étaient présents statquement)et ajout d'1'bouton filtre active-->
 	<section id="portfolio">
 		<h2>Mes Projets</h2>
 		<div id="categories">
-			<button class="btn active" onclick="filterSelection('all')">Tous</button>
-			<button class="btn" onclick="filterSelection('1')">Objets</button>
-            <button class="btn" onclick="filterSelection('2')">Appartements</button>
-            <button class="btn" onclick="filterSelection('3')">Hotels & restaurants</button>
+			<button class="btn active" onclick="filter('All');clicked(this)">Tous</button>
 		</div>
 		<div class="gallery" id="works"> 
 		</div>
@@ -69,7 +66,6 @@
 		</ul>
 	</nav>
 </footer>
-<script src="../FrontEnd/js/script.js"></script>
-<script src="../FrontEnd/js/filters.js"></script>
+<script src="js/script.js"></script>
 </body>
 </html>
