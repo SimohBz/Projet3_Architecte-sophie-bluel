@@ -1,0 +1,63 @@
+body{
+	background-color: #fafaf2;
+}
+
+#form{
+	display: flex;
+	flex-direction: column;
+	width: 390px;
+	margin: 20vh auto  auto;
+	gap: 35px;
+}
+
+#form h1{
+	color: #1D6154;
+	text-align: center;
+	font-family: Syne;
+}
+
+#form button{
+	border-radius: 60px;
+	border: none;
+	width: 180px;
+	height: 40px;
+	background-color: #1D6154;
+	color: white;
+	display: block;
+	margin: auto;
+}
+
+#form a{
+	color: black;
+	text-align: center;
+}
+
+.input-control{
+	display: flex;
+	flex-direction: column;
+}
+
+.input-control input{
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	border-radius: 14px;
+	width: 100%;
+	height: 50px;
+}
+
+.input-control input:focus{
+	outline: 0;
+}
+
+.input-control.success input{
+	border-color: #1D6154;
+}
+
+.input-control.error input{
+	border-color: red;
+}
+
+.input-control .error{
+	color: red;
+
+}
