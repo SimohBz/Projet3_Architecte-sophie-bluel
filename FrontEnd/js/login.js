@@ -1,12 +1,12 @@
-const form = document.getElementById("form");
-const username = document.getElementById("usename");
-const email = document.getElementById("email");
-const password = document.getElementById("password");
+//Get elements for form log-in
+const form = document.getElementById("form"); // Id in html Ok
+const email = document.getElementById("email"); // no Id in html but class !
+const password = document.getElementById("password"); // no Id in html but class !
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-
   validateInputs();
+  logIn();
 });
 
 const setError = (element, message) => {
@@ -28,46 +28,54 @@ const setSuccess = (element) => {
 };
 
 const isValidEmail = (email) => {
-  const re =
+  const regex =
     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  return re.test(String(email).toLowerCase());
+  return regex.test(String(email).toLowerCase());
 };
 
 const validateInputs = () => {
-  const emailValue = email.value.trim();
-  const passwordValue = password.value.trim();
+  emailValue = email.value.trim();
+  passwordValue = password.value.trim();
 
   if (emailValue === "") {
     setError(email, "Email is required");
   } else if (!isValidEmail(emailValue)) {
-    setError(email, "Erreur dans l`identifiant ou le mot de passe");
+    setError(email, "Erreur dans l'identifiant");
   } else {
     setSuccess(email);
   }
 
   if (passwordValue === "") {
     setError(password, "Password is required");
-  } else if (passwordValue.length < 8) {
-    setError(password, "Erreur dans l`identifiant ou le mot de passe");
-  } else {
+  } else if (passwordValue.length >= 5 && passwordValue.length <= 15) {
     setSuccess(password);
+  } else {
+    setError(password, "Erreur dans le mot de passe");
   }
 };
 
-fetch("http://localhost:5678/api/users/login", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({ email: email, password: password }),
-})
-  .then((res) => res.json())
-  .then((data) => {
-    if (data.message) {
-      document.querySelector("#error-message").textContent =
-        "Erreur dans l`identifiant ou le mot de passe";
-    } else {
-      localStorage.setItem("access_token", data.token);
-      localStorage.setItem("userId", data.userId);
-      window.location.href = "/FrontEnd/";
-    }
+function logIn() {
+  fetch("http://localhost:5678/api/users/login", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email: emailValue, password: passwordValue }),
   })
-  .catch((error) => console.Error(error));
+    .then((res) => res.json())
+    .then((data) => {
+      if (!JSON.stringify(data).match("token")) {
+        document.querySelector("#form > div.login_error").textContent =
+          "utilisateur inconnu";
+      } else {
+        localStorage.setItem("access_token", data.token);
+        localStorage.setItem("userId", data.userId);
+        window.location.href = "/FrontEnd/";
+        console.log(
+          "token:",
+          localStorage.getItem("access_token"),
+          "userID:",
+          localStorage.getItem("userId")
+        );
+      }
+    })
+    .catch((error) => console.Error(error));
+}

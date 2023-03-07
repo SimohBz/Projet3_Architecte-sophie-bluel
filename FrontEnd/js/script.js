@@ -1,4 +1,4 @@
-//récuperation des Traveaux
+//récuperation des Traveaux d'Architecte
 const urlWorks = "http://localhost:5678/api/works";
 const works = document.getElementById("works");
 const getWorks = () => {

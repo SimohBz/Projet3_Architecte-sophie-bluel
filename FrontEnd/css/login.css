@@ -1,0 +1,134 @@
+body {
+	background-color: #fafaf2;
+	max-width: 1140px;
+	margin:auto;
+	font-family: 'Work Sans' ;
+	font-size: 14px;
+	line-height: 1;
+	padding: 7px;
+}
+
+/*header and nav*/
+header {
+	display: flex;
+	justify-content: space-between;
+	margin: 50px 0
+}
+
+h1{
+	display: flex;
+	flex-direction: column;
+	font-family: 'Syne';
+	font-size: 22px;
+	font-weight: 800;
+	color: #B1663C
+}
+
+h1 > span {
+	font-family: 'Work Sans';
+	font-size:10px;
+	letter-spacing: 0.1em;
+}
+
+nav ul {
+	display: flex;
+	align-items: center;
+	list-style-type: none;
+}
+
+nav li {
+	padding: 0 15px;
+	font-size: em;
+}
+
+li:hover {
+	color: #B1663C;
+	font-weight: bolder;
+}
+
+/*nav*/
+.loginClicked{
+	font-weight: bolder;
+	font-family: none; 
+	pointer-events: none;
+}
+
+nav img{
+	width: 19px;
+	height: 19px;
+}
+
+a:hover {
+	color: #B1663C;
+}
+
+header a {
+	color:black; 
+    text-decoration:none; 
+    cursor:pointer;
+}
+
+/*Login form*/
+#form{
+	display: flex;
+	flex-direction: column;
+	width: 390px;
+	margin: 20vh auto  auto;
+	gap: 35px;
+}
+
+#form h1{
+	color: #1D6154;
+	text-align: center;
+}
+
+#form button{
+	border-radius: 60px;
+	border: none;
+	width: 180px;
+	height: 40px;
+	background-color: #1D6154;
+	color: white;
+	display: block;
+	margin: auto;
+}
+
+#form a{
+	color: black;
+	text-align: center;
+}
+
+.input-control{
+	display: flex;
+	flex-direction: column;
+}
+
+.input-control input{
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	border-radius: 14px;
+	width: 100%;
+	height: 50px;
+}
+
+.input-control input:focus{
+	outline: 0;
+}
+
+.input-control.success input{
+	border-color: #1D6154;
+}
+
+.input-control.error input{
+	border-color: red;
+}
+
+.input-control .error{
+	color: red;
+}
+
+.login_error{
+	background-color: red;
+	color: white;
+}
+
