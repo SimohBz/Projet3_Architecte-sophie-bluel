@@ -54,8 +54,8 @@ const validateInputs = () => {
   }
 };
 
-function logIn() {
-  fetch("http://localhost:5678/api/users/login", {
+async function logIn() {
+  await fetch("http://localhost:5678/api/users/login", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email: emailValue, password: passwordValue }),
@@ -68,7 +68,7 @@ function logIn() {
       } else {
         localStorage.setItem("access_token", data.token);
         localStorage.setItem("userId", data.userId);
-        window.location.href = "/FrontEnd/";
+        document.location.href = "edit.html";
         console.log(
           "token:",
           localStorage.getItem("access_token"),
