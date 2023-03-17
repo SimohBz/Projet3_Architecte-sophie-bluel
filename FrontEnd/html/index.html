@@ -8,16 +8,27 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
 	<meta name="description" content="">
-	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" 
+   integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" 
+   crossorigin="anonymous" referrerpolicy="no-referrer">
+	<link rel="stylesheet" href="../css/index.css">
 </head>
 <body>
+<!--Ajout de la Banniere-->
+	<div class="banniere">
+		<i class="fa-sharp fa-regular fa-pen-to-square"></i>
+		<a href="#">Mode édition</a>
+		<button href="#">Publier Les Changements</button>
+	</div>
 <header>
 	<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
 	<nav>
 		<ul>
 			<li><a href="#">Projets</a></li>
 			<li><a href="#">Contact</a></li>
-			<li> <a href="../html/login.html">Login</a> </li>
+			<li id="login"class="show"> <a href="../html/login.html">Login</a> </li>
+<!--Ajout link Logout-->		
+			<li id="logout" class="hide"> <a href="../html/index.html">Logout</a> </li>
 			<li><img src="../assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
 	</nav>
@@ -26,6 +37,11 @@
 	<section id="introduction">
 		<figure>
 			<img src="../assets/images/sophie-bluel.png" alt="">
+<!--Ajout icon et link modifier-->			
+			<div class="modifier">
+				<i class="fa-sharp fa-regular fa-pen-to-square"></i>
+		    	<a href="#">Modifier</a>
+			</div>
 		</figure>
 		<article>
 			<h2>Designer d'espace</h2>
@@ -35,13 +51,60 @@
 		</article>
 	</section>
 	<section id="portfolio">
-		<h2>Mes Projets</h2>
+<!--Ajout icon et link modifier-->
+		<div class="works_modification">
+			<h2>Mes Projets</h2>
+			<div class="modifier">
+				<i class="fa-sharp fa-regular fa-pen-to-square"></i>
+				<a href="#">Modifier</a>
+			</div>
+		</div>	
+<!--intégration des bts filtres dynamiquement-->		
 		<div id="categories">
 			<button class="btn active" onclick="filter('All');clicked(this)">Tous</button>
 		</div>
+<!--intégration de la galerie des traveaux dynamiquement-->		
 		<div class="gallery" id="works"> 
 		</div>
 	</section>
+
+<!--Ajout de la Modal Current Work-->
+	<div id="currentWorkModal" class="modal">
+		<div class="modal_currentWork">
+			<span class="close" onclick="closeModal()">&times;</span>
+			<h1 class="title">Galerie Photos</h1>
+			<div>
+				<div id="alert" class="alert_success" role="alert"></div>
+			</div>
+			<div id="gallery_edit"> </div>
+			<div class="trail"></div>
+			<div class="action">
+				<button class="edit_button" onclick="newWork()">Ajouter une Photo</button>
+				<button class="delete_button" onclick="deleteAllWorks()">Supprimer la Galerie</button>
+			</div>
+		</div>
+	</div>
+
+<!--Ajout de la Modal New Work-->
+	<div id="NewWorkModal" class="modal">
+		<div class="modal_newWork">
+			<span class="close" onclick="closeModal()">&times;</span>
+			<h1 class="title">Ajout Photos</h1>
+			<div>
+				<div id="alert" class="alert_Success" role="alert"></div>
+			</div>
+			<div id="gallery_edit"> </div>
+			<div class="trail"></div>
+			<form action="#" method="post">
+				<label for="title">Titre</label>
+				<input type="text" name="titre" id="titre">
+				<label for="category">Catégorie</label>
+				<input type="text" name="categorie" id="categorie">
+				<button class="validate_button" onclick="validate()">Valider</button>
+			</form>
+		</div>
+	</div>
+
 	<section id="contact">
 		<h2>Contact</h2>
 		<p>Vous avez un projet ? Discutons-en !</p>
@@ -64,6 +127,6 @@
 		</ul>
 	</nav>
 </footer>
-	<script src="../js/script.js"></script>
+	<script src="../js/index.js"></script>
 </body>
 </html>

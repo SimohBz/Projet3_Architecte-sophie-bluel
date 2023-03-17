@@ -68,7 +68,7 @@ async function logIn() {
       } else {
         localStorage.setItem("access_token", data.token);
         localStorage.setItem("userId", data.userId);
-        document.location.href = "edit.html";
+        document.location.href = "index.html";
         console.log(
           "token:",
           localStorage.getItem("access_token"),

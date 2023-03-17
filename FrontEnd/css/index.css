@@ -1,0 +1,411 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+	padding: 7px;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/** end reset css**/
+body {
+	max-width: 1140px;
+	margin:auto;
+	font-family: 'Work Sans' ;
+	font-size: 14px;
+}
+header {
+	display: flex;
+	justify-content: space-between;
+	margin: 50px 0
+}
+section {
+	margin: 50px 0
+}
+
+h1{
+	display: flex;
+	flex-direction: column;
+	font-family: 'Syne';
+	font-size: 22px;
+	font-weight: 800;
+	color: #B1663C
+}
+
+h1 > span {
+	font-family: 'Work Sans';
+	font-size:10px;
+	letter-spacing: 0.1em;
+}
+
+h2{
+	font-family: 'Syne';
+	font-weight: 700;
+	font-size: 30px;
+	color: #1D6154
+}
+nav ul {
+	display: flex;
+	align-items: center;
+	list-style-type: none;
+
+}
+nav li {
+	padding: 0 10px;
+	font-size: 1.2em;
+}
+
+a:hover {
+	color: #B1663C;
+	font-weight: bolder;
+	font-family: 'Work Sans';
+}
+
+header a {
+	color:black; 
+    text-decoration:none; 
+    cursor:pointer;
+}
+
+nav img{
+	width: 19px;
+	height: 19px;
+}
+
+#introduction {
+	display: flex;
+	align-items: center;
+}
+
+#introduction figure {
+	flex: 1
+}
+#introduction img {
+	display: block;
+	margin: auto;
+	width: 80%;
+}
+
+#introduction article {
+	flex: 1
+}
+#introduction h2 {
+	margin-bottom: 1em;
+}
+
+#introduction p {
+	margin-bottom: 0.5em;
+}
+
+.gallery {
+	width: 100%;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-column-gap: 20px;
+	grid-row-gap: 20px;
+}
+
+.gallery img {
+	width: 100%;
+
+}
+#contact {
+	width: 50%;
+margin: auto;
+}
+#contact > * {
+	text-align: center;
+
+}
+#contact h2{
+	margin-bottom: 20px;
+}
+#contact form {
+	text-align: left;
+	margin-top:30px;
+	display: flex;
+	flex-direction: column;
+}
+
+#contact input{
+	height: 50px;
+	font-size: 1em;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+#contact label {
+	margin: 2em 0 1em 0;
+}
+#contact textarea {
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+input[type="submit"]{
+	font-family: 'Syne';
+	font-weight: 700;
+	color: white;
+	background-color: #1D6154;
+	margin : 2em auto ;
+	width: 180px;
+	text-align: center;
+	border-radius: 60px ;
+}
+
+footer nav ul {
+	display: flex;
+	justify-content: flex-end;
+	margin: 2em
+}
+
+/* Filtres*/
+body{
+	background-color: #fafaf2;
+}
+
+#portfolio h2{
+	text-align: center;
+}
+
+#categories{
+	display: flex;
+	margin-bottom: 25px;
+	justify-content: center;
+}
+#categories .btn{
+	font-family: 'Syne';
+	height: 37px;
+	color: #1D6154;
+	border: solid 1px #1D6154;
+	background-color: white;
+	margin : 0.5em ;
+	width: 200px;
+	text-align: center;
+	border-radius: 60px ;
+} 
+
+#categories .btn:hover {
+	background-color: #1D6154;
+	color: white;
+  }
+  
+#categories .btn.active {
+	background-color: #1D6154;
+	color: white;
+  }
+  
+  /* Banniere */
+
+.banniere{
+    background-color: black;
+    display: none;                                   /*  Bar to display by js   */
+    justify-content: center;
+    align-items: center;
+    height: 55px;
+    width: 100%;
+    gap: 7px;
+}
+
+.banniere a{
+    color: white
+}
+
+.banniere a:hover {
+	color: #B1663C;
+	font-weight: bolder;
+}
+
+.banniere button{
+    border: 3px solid black;
+    background-color: white;
+    text-align: center;
+    width: 200px;
+    height: 40px;
+    border-radius: 50PX;
+    cursor: pointer;
+}
+
+.banniere button:hover {
+	background-color: #B1663C;
+    transform: scale(1.03);
+}
+
+.banniere .fa-sharp.fa-regular.fa-pen-to-square{
+    color: white;
+}
+
+#logout{
+	display: none;                                   /* Logout Link to display by js */
+
+}
+
+.modifier a {
+	color:black; 
+    text-decoration:none; 
+    cursor:pointer;
+}
+
+.works_modification{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.modifier{                                          /* Modify Links to display by js */
+	display: none;
+
+}
+
+/* Modals */
+.modal{
+    display: none;                                  /* 2 Modals to display by js */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+.modal_currentWork, .modal_newWork{
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 3px solid #888;
+    width: 65%;
+    height: 670px;
+    border-radius: 15px;
+}
+
+/* modal_currentWork */
+.currentWorkModal{
+    display: flex;
+    flex-direction: column;
+}
+
+.currentWorkModal h1{
+    text-align: center;
+    font-size: 26px;
+    font-weight: lighter;
+    font-family: sans-serif;
+    color: black;
+}
+
+.currentWorkModal .action{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: auto;
+    margin-bottom: 15px;
+}
+
+.currentWorkModal .edit_button{
+    background-color: #1D6154;
+    color: white;
+    border-radius: 60px;
+    height: 35px;
+    width: 235px;
+}
+
+.currentWorkModal .delete_button{
+    color: red;
+    width: 235px;
+    border: none;
+    background-color:#fefefe;
+}
+
+.edit_button .delete_button:hover{
+    cursor: pointer;
+}
+
+/* modal_newWork */
+.newWorkModal{
+    display: flex;
+    flex-direction: column;
+}
+
+.newWorkModal h1{
+    text-align: center;
+    font-size: 26px;
+    font-weight: lighter;
+    font-family: sans-serif;
+    color: black;
+}
+
+.newWorkModal form{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin: auto;
+    margin-bottom: 15px;
+}
+
+.newWorkModal input{
+    color: black;
+    border: none;
+    box-shadow:0 0 7px lightgray;
+    border-radius: 15px;
+    height: 50px;
+    width: 420px;
+}
+
+.modal_newWork .validate_button{
+    border: gray;
+    background-color: gray;
+    color: white;
+    border-radius: 60px;
+    height: 35px;
+    width: 235px;
+    margin: auto;
+}
+
+.validate_button:hover{
+    background-color: #1D6154;
+    cursor: pointer;
+}
