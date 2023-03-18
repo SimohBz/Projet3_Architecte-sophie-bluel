@@ -106,6 +106,7 @@ function clicked(sl) {
 let log = localStorage.getItem("access_token");
 console.log(log);
 const logout = document.getElementById("logout");
+console.log(logout);
 
 if (log != null) {
   logout.classList.add("show");

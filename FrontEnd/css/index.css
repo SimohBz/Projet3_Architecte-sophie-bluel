@@ -239,7 +239,7 @@ body{
 
 .banniere{
     background-color: black;
-    display: none;                                   /*  Bar to display by js   */
+    display: none;                          /*  Bar to display by js   */
     justify-content: center;
     align-items: center;
     height: 55px;
@@ -276,7 +276,7 @@ body{
 }
 
 #logout{
-	display: none;                                   /* Logout Link to display by js */
+	display: none;                        /* Logout Link to display by js */
 
 }
 
@@ -295,14 +295,14 @@ body{
     margin-bottom: 100px;
 }
 
-.modifier{                                          /* Modify Links to display by js */
+.modifier{                               /* Modify Links to display by js */
 	display: none;
 
 }
 
 /* Modals */
-.modal{
-    display: none;                                  /* 2 Modals to display by js */
+.modal1, .modal2{
+    display: none;						/* 2Modals to display by js */		
     position: fixed;
     z-index: 1;
     left: 0;
@@ -310,7 +310,6 @@ body{
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgb(0, 0, 0);
     background-color: rgba(0, 0, 0, 0.4);
 }
 .modal_currentWork, .modal_newWork{
@@ -324,12 +323,12 @@ body{
 }
 
 /* modal_currentWork */
-.currentWorkModal{
+.modal_currentWork{
     display: flex;
     flex-direction: column;
 }
 
-.currentWorkModal h1{
+.modal_currentWork h1{
     text-align: center;
     font-size: 26px;
     font-weight: lighter;
@@ -337,7 +336,7 @@ body{
     color: black;
 }
 
-.currentWorkModal .action{
+.modal_currentWork .action{
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -345,7 +344,7 @@ body{
     margin-bottom: 15px;
 }
 
-.currentWorkModal .edit_button{
+.modal_currentWork .edit_button{
     background-color: #1D6154;
     color: white;
     border-radius: 60px;
@@ -353,7 +352,7 @@ body{
     width: 235px;
 }
 
-.currentWorkModal .delete_button{
+.modal_currentWork .delete_button{
     color: red;
     width: 235px;
     border: none;
@@ -365,12 +364,12 @@ body{
 }
 
 /* modal_newWork */
-.newWorkModal{
+.modal_newWork{
     display: flex;
     flex-direction: column;
 }
 
-.newWorkModal h1{
+.modal_newWork h1{
     text-align: center;
     font-size: 26px;
     font-weight: lighter;
@@ -378,7 +377,7 @@ body{
     color: black;
 }
 
-.newWorkModal form{
+.modal_newWork form{
     display: flex;
     flex-direction: column;
     gap: 25px;
@@ -386,7 +385,7 @@ body{
     margin-bottom: 15px;
 }
 
-.newWorkModal input{
+.modal_newWork input{
     color: black;
     border: none;
     box-shadow:0 0 7px lightgray;
