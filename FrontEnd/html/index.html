@@ -15,7 +15,7 @@
 </head>
 <body>
 							<!--Ajout de la Banniere-->
-	<div class="banniere">
+	<div id="banniere"class="banniere">
 		<i class="fa-sharp fa-regular fa-pen-to-square"></i>
 		<a href="#">Mode édition</a>
 		<button href="#">Publier Les Changements</button>
@@ -26,9 +26,9 @@
 		<ul>
 			<li><a href="#">Projets</a></li>
 			<li><a href="#">Contact</a></li>
-			<li id="login"class="hide"> <a href="../html/login.html">Login</a> </li>
+			<li id="login"class="login"> <a href="../html/login.html">Login</a> </li>
 							<!--Ajout link Logout-->		
-			<li id="logout" class="hide"> <a href="../html/index.html">Logout</a> </li>
+			<li id="logout" class="Logout"> <a href="../html/index.html">Logout</a> </li>
 			<li><img src="../assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
 	</nav>
@@ -38,7 +38,7 @@
 		<figure>
 			<img src="../assets/images/sophie-bluel.png" alt="">
 							<!--Ajout icon et link modifier-->			
-			<div class="modifier">
+			<div id="modifierNon" class="modifierNon">
 				<i class="fa-sharp fa-regular fa-pen-to-square"></i>
 		    	<a href="#">Modifier</a>
 			</div>
@@ -54,9 +54,9 @@
 						<!--Ajout icon et link modifier-->
 		<div class="works_modification">
 			<h2>Mes Projets</h2>
-			<div class="modifier">
+			<div id="modifier" class="modifier">
 				<i class="fa-sharp fa-regular fa-pen-to-square"></i>
-				<a href="#">Modifier</a>
+				<a href="#modal1" class="js-modal">Modifier</a>
 			</div>
 		</div>	
 						<!--intégration des bts filtres dynamiquement-->		
@@ -68,8 +68,8 @@
 		</div>
 	</section>
 
-				<!--Modal current work-->
-	<div id="currentWorkModal" class="modal1">
+	<!--Ajout de la Modal Current Work-->
+	<div id="currentWorkModal" class="modal">
 		<div class="modal_currentWork">
 			<span class="close" onclick="closeModal()">&times;</span>
 			<h1 class="title">Galerie Photos</h1>
@@ -85,8 +85,8 @@
 		</div>
 	</div>
 
-				<!--Modal new work-->
-	<div id="newWorkModal" class="modal2">
+<!--Ajout de la Modal New Work-->
+	<div id="NewWorkModal" class="modal">
 		<div class="modal_newWork">
 			<span class="close" onclick="closeModal()">&times;</span>
 			<h1 class="title">Ajout Photos</h1>

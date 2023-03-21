@@ -100,25 +100,69 @@ function clicked(sl) {
   sl.classList.add("active");
 }
 
-//display none in CSS: banniére, link logout et modifier
-//display none in CSS: 2modals
+//display none dans CSS pour: banniére, link logout et modifier et les 2modals
 
 let log = localStorage.getItem("access_token");
-console.log(log);
-const logout = document.getElementById("logout");
-console.log(logout);
-
 if (log != null) {
-  logout.classList.add("show");
-  logout.classList.remove("hide");
-
-  const login = document.get("login");
-  login.classList.add("hide");
-
   const categories = document.getElementById("categories");
   categories.style.display = "none";
+
+  const login = document.getElementById("login");
+  login.style.display = "none";
+
+  const logout = document.getElementById("logout");
+  logout.style.display = "block";
+
+  const banniere = document.getElementById("banniere");
+  banniere.style.display = "block";
+
+  const modifier = document.getElementById("modifier");
+  modifier.style.display = "block";
+
+  const modifierNon = document.getElementById("modifierNon");
+  modifierNon.style.display = "block";
 }
 
 logout.addEventListener("click", function () {
   localStorage.clear();
 });
+
+/*
+
+let modal = null
+
+const openModal = function(e){
+  e.preventDefaut()
+  const target = document.querySelector(e.terget.getAttribute('href'))
+  target.style.display = null
+  target.removeAttribute('aria-hidden')
+  target.setAttribute('aria-modal', 'true')
+  modal = target
+  modal.addEventListener('click', closeModal)
+  modal.querySelector('.js-modal-close').addEventListener('click', closeModal)
+}
+
+const closeModal = function(e){
+  if (modal === null) return
+  e.preventDefaut()
+  modal.style.display = "none"
+  modal.setAttribute('aria-hidden', "true")
+  modal.removeAttribute("aria-modal")
+  modal.removeEventListener('click', closeModal)
+  modal.querySelector('.js-modal-close').removeEventListener('click', closeModal)
+  modal = null
+
+
+document.querySelectorAll('.js-modal').forEach(a=> {
+  a.addEventListener('click', openModal)
+ 
+  
+})*/
+
+
+
+
+
+
+
+
