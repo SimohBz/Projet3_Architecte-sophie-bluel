@@ -1,4 +1,4 @@
-/*body*/
+/* body */
 body {
 	background-color: #fafaf2;
 	max-width: 1140px;
@@ -9,7 +9,7 @@ body {
 	padding: 7px;
 }
 
-/*header and nav*/
+/* header and nav */
 header {
 	display: flex;
 	justify-content: space-between;
@@ -47,7 +47,7 @@ li:hover {
 	font-weight: bolder;
 }
 
-/*nav*/
+/* nav */
 .loginClicked{
 	font-weight: bolder;
 	font-size: large;
@@ -70,7 +70,7 @@ header a {
 	font-size: medium;
 }
 
-/*Login form*/
+/* Login form */
 #form{
 	display: flex;
 	flex-direction: column;

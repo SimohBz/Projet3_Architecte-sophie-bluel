@@ -1,4 +1,4 @@
-//récuperation des Traveaux d'Architecte
+//récuperation des Traveaux d'Architecte de l'API
 const urlWorks = "http://localhost:5678/api/works";
 const works = document.getElementById("works");
 const getWorks = () => {
@@ -28,7 +28,7 @@ const getWorks = () => {
 };
 getWorks();
 
-//récuperation des Categories
+//récuperation des Categories de l'API
 const urlCategories = "http://localhost:5678/api/categories";
 const categories = document.getElementById("categories");
 const getCategories = () => {
@@ -52,7 +52,7 @@ const getCategories = () => {
 };
 getCategories();
 
-//création des filters
+//création des filters en dynamique
 function filter(selected) {
   savedDataWorks = JSON.parse(localStorage.getItem("SauvegardeWorks"));
 
@@ -100,7 +100,8 @@ function clicked(sl) {
   sl.classList.add("active");
 }
 
-//display none dans CSS pour: banniére, link logout et modifier et les 2modals
+//display: banniére, link Logout et links modifier
+//display none link Login et Filters
 
 let log = localStorage.getItem("access_token");
 if (log != null) {
@@ -126,43 +127,3 @@ if (log != null) {
 logout.addEventListener("click", function () {
   localStorage.clear();
 });
-
-/*
-
-let modal = null
-
-const openModal = function(e){
-  e.preventDefaut()
-  const target = document.querySelector(e.terget.getAttribute('href'))
-  target.style.display = null
-  target.removeAttribute('aria-hidden')
-  target.setAttribute('aria-modal', 'true')
-  modal = target
-  modal.addEventListener('click', closeModal)
-  modal.querySelector('.js-modal-close').addEventListener('click', closeModal)
-}
-
-const closeModal = function(e){
-  if (modal === null) return
-  e.preventDefaut()
-  modal.style.display = "none"
-  modal.setAttribute('aria-hidden', "true")
-  modal.removeAttribute("aria-modal")
-  modal.removeEventListener('click', closeModal)
-  modal.querySelector('.js-modal-close').removeEventListener('click', closeModal)
-  modal = null
-
-
-document.querySelectorAll('.js-modal').forEach(a=> {
-  a.addEventListener('click', openModal)
- 
-  
-})*/
-
-
-
-
-
-
-
-

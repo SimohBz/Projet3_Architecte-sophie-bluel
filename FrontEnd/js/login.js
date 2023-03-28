@@ -1,7 +1,7 @@
-//Get elements for form log-in
-const form = document.getElementById("form"); // Id in html Ok
-const email = document.getElementById("email"); // no Id in html but class !
-const password = document.getElementById("password"); // no Id in html but class !
+//Paramétrage de la fenetre login
+const form = document.getElementById("form");
+const email = document.getElementById("email");
+const password = document.getElementById("password");
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -53,7 +53,7 @@ const validateInputs = () => {
     setError(password, "Erreur dans le mot de passe");
   }
 };
-
+//Récuperation du Token d'authentification
 async function logIn() {
   await fetch("http://localhost:5678/api/users/login", {
     method: "POST",

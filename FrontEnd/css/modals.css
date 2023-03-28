@@ -1,0 +1,206 @@
+/* 2Modals to display by js */
+.modalCurrentWork, .modalNewWork{
+    visibility: hidden;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.currentModalContent, .newModalContent{
+    background-color: #FFFFFF;
+    margin: 15% auto;
+    padding: 20px;
+    border:  #B3B3B3 1px solid;
+    width: 630px;
+    height: 700px;
+    border-radius: 10px;
+    overflow: auto;
+}
+
+.currentModalContent h1, .newModalContent h1{
+    margin-top: 15px;
+    text-align: center;
+    font-size: 26px;
+    font-weight: lighter;
+    font-family: sans-serif;
+    color: black;
+}
+
+/* modalCurrentWork */
+.currentModalContent{
+    display: flex;
+    flex-direction: column;
+}
+
+.closeModalCurrentWork{
+    font-size: xx-large;
+    text-align: center;
+    width: 2rem;
+    line-height: 1.5rem;
+    float: right;
+}
+
+.showPictures{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 55px 100px;
+    height: 355px;
+}
+
+.showPictures img {
+	width: 78px;
+    height: 104px;
+    position: absolute;
+}
+
+.fa-regular:hover, .fa-solid:hover {
+    cursor: pointer;
+    opacity: 1.5;
+    transform: scale(1.4);
+    color: red;
+}
+
+.currentModalContent .actions{
+    margin-left: 95px;
+    padding-top: 45px;
+    width: 430px;
+    gap: 25px;
+    border-top:  #B3B3B3 1px solid;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.openModalNewWork{
+    background-color: #1D6154;
+    color: white;
+    border-radius: 60px;
+    height: 35px;
+    width: 235px;
+    cursor: pointer;
+}
+
+.delete_button{
+    color: red;
+    width: 235px;
+    border: none;
+    background-color:#fefefe;
+    cursor: pointer;
+}
+
+/* modal_newWork */
+.newModalContent{
+    display: flex;
+    flex-direction: column;
+}
+
+.directions{
+    display: flex;
+    justify-content: space-between;
+    font-size: xx-large
+
+}
+
+.editionPhoto{
+    box-shadow:0 0 7px lightgray;
+    background-color: #E8F1F6;
+    border-radius: 5px;
+    height: 30%;
+    width: 420px;
+    margin: auto;
+    margin-top: 95px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.editionPhoto i{
+    margin-top: 20px;
+    font-size: 90px;
+    color: #B9C5CC;
+}
+.addImage{
+    border-radius: 50px;
+    background-color: #CBD6DC;
+    width: 175px;
+    height: 35px;
+    font-size: large;
+    color: #306685;
+    text-align: center;
+    padding: 10px;
+}
+
+.editionPhoto input{
+    opacity: 0;
+    cursor: pointer;
+}
+
+.editionPhoto .infoUpload{
+    margin-bottom: 20px;
+    color: #444444;
+}
+
+.newModalContent form{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+.newModalContent input{
+    color: black;
+    border: none;
+    box-shadow:0 0 7px lightgray;
+    border-radius: 5px;
+    height: 50px;
+    width: 420px;
+}
+
+.validate_button{
+    border: gray;
+    background-color: gray;
+    color: white;
+    border-radius: 60px;
+    height: 35px;
+    width: 235px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+
+.validate_button:hover{
+    background-color: #1D6154;
+    cursor: pointer;
+}
+
+/*Colse and show modals*/
+.closeModalCurrentWork, .closeModalNewWork, .backBtn{
+    cursor: pointer;
+}
+
+.showModalCurrentWork{
+	opacity: 1;
+	visibility: visible;
+	transform: scale(1);
+	transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+  }
+
+  .validationPtn{
+    border-top: #B3B3B3 1px solid;
+    padding-top: 25px;
+  }
+
+
+
+  

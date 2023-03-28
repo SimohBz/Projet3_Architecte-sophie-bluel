@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 	<meta charset="UTF-8">
-	<title>Sophie Bluel - Architecte d'intérieur</title>
+	<title>Sophie Bluel - Architecte d'intérieur homepage</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,6 +12,7 @@
    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" 
    crossorigin="anonymous" referrerpolicy="no-referrer">
 	<link rel="stylesheet" href="../css/index.css">
+	<link rel="stylesheet" href="../css/modals.css">
 </head>
 <body>
 							<!--Ajout de la Banniere-->
@@ -40,7 +41,7 @@
 							<!--Ajout icon et link modifier-->			
 			<div id="modifierNon" class="modifierNon">
 				<i class="fa-sharp fa-regular fa-pen-to-square"></i>
-		    	<a href="#">Modifier</a>
+		    	<a class="#">Modifier</a>
 			</div>
 		</figure>
 		<article>
@@ -56,7 +57,7 @@
 			<h2>Mes Projets</h2>
 			<div id="modifier" class="modifier">
 				<i class="fa-sharp fa-regular fa-pen-to-square"></i>
-				<a href="#modal1" class="js-modal">Modifier</a>
+				<a class="openModalCurrentWork">Modifier</a>
 			</div>
 		</div>	
 						<!--intégration des bts filtres dynamiquement-->		
@@ -67,44 +68,45 @@
 		<div class="gallery" id="works"> 
 		</div>
 	</section>
-
-	<!--Ajout de la Modal Current Work-->
-	<div id="currentWorkModal" class="modal1">
-		<div class="modal_currentWork">
-			<span class="close" onclick="closeModal()">&times;</span>
+	 <!--Ajout de la Modal Current Work-->
+	 <div id="currentWork" class="modalCurrentWork">
+		<div class="currentModalContent">
+			<div><span class="closeModalCurrentWork">&times;</span></div>
 			<h1 class="title">Galerie Photos</h1>
-			<div>
-				<div id="alert" class="alert_success" role="alert"></div>
-			</div>
-			<div id="gallery_edit"> </div>
-			<div class="trail"></div>
-			<div class="action">
-				<button class="edit_button" onclick="newWork()">Ajouter une Photo</button>
+			<div class="showPictures" id="currentPictures"></div>
+			<div class="actions">
+				<button class="openModalNewWork">Ajouter une Photo</button>
 				<button class="delete_button" onclick="deleteAllWorks()">Supprimer la Galerie</button>
 			</div>
 		</div>
 	</div>
-
-<!--Ajout de la Modal New Work-->
-	<div id="NewWorkModal" class="modal2">
-		<div class="modal_newWork">
-			<span class="close" onclick="closeModal()">&times;</span>
-			<h1 class="title">Ajout Photos</h1>
-			<div>
-				<div id="alert" class="alert_Success" role="alert"></div>
+		
+     <!--Ajout de la Modal New Work-->
+	 <div id="newWork" class="modalNewWork">
+		<div class="newModalContent">
+			<div class="directions">
+				<span class="backBtn">&#x2190;</span>
+				<span class="closeModalNewWork">&times;</span>
 			</div>
-			<div id="gallery_edit"> </div>
-			<div class="trail"></div>
+			<H1 class="title">Ajout Photos</H1>
+			<div class="editionPhoto" id="newPictures">
+				<i class="fa-sharp fa-regular fa-image image-upload-icone"></i>
+				<label for=" upload-image" class="addImage"> + Ajouter Photo</label>
+				<input type="file" id="upload-image" name="image-upload-icone" max-size="4000" accept=".jpg, .jpeg, .png" multiple>
+				<p class="infoUpload">jpg, png: 4mo Max</p>
+			</div>
+
 			<form action="#" method="post">
 				<label for="title">Titre</label>
 				<input type="text" name="titre" id="titre">
 				<label for="category">Catégorie</label>
 				<input type="text" name="categorie" id="categorie">
-				<button class="validate_button" onclick="validate()">Valider</button>
+				<idv class="validationPtn"><button class="validate_button" onclick="validate()">Valider</button>
+				</idv>
 			</form>
 		</div>
-	</div>
-
+	 </div>
+		
 	<section id="contact">
 		<h2>Contact</h2>
 		<p>Vous avez un projet ? Discutons-en !</p>
@@ -128,5 +130,6 @@
 	</nav>
 </footer>
 	<script src="../js/index.js"></script>
+	<script src="../js/modals.js"></script>
 </body>
 </html>
