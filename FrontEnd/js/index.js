@@ -101,7 +101,7 @@ function clicked(sl) {
 }
 
 //display: banniére, link Logout et links modifier
-//display none link Login et Filters
+//display none: link Login et Filters
 
 let log = localStorage.getItem("access_token");
 if (log != null) {

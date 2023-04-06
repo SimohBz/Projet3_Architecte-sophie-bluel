@@ -62,10 +62,7 @@ async function logIn() {
   })
     .then((res) => res.json())
     .then((data) => {
-      if (!JSON.stringify(data).match("token")) {
-        document.querySelector("#form > div.login_error").textContent =
-          "utilisateur inconnu";
-      } else {
+      if (data?.token) {
         localStorage.setItem("access_token", data.token);
         localStorage.setItem("userId", data.userId);
         document.location.href = "index.html";
@@ -75,6 +72,9 @@ async function logIn() {
           "userID:",
           localStorage.getItem("userId")
         );
+      } else {
+        document.querySelector("#form > div.login_error").textContent =
+          "utilisateur inconnu";
       }
     })
     .catch((error) => console.Error(error));

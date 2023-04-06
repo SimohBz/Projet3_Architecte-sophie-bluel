@@ -1,4 +1,4 @@
-/* 2Modals to display by js */
+/* Création des Modals */
 .modalCurrentWork, .modalNewWork{
     visibility: hidden;
     position: fixed;
@@ -9,7 +9,11 @@
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modalNewWork{
+    background-color: rgba(0, 0, 0, 0);
 }
 
 .currentModalContent, .newModalContent{
@@ -23,6 +27,19 @@
     overflow: auto;
 }
 
+.closeModalCurrentWork:hover, .closeModalNewWork:hover, .backBtn:hover{        
+    background-color: #1D6154;
+    color: white;
+    cursor: pointer;
+    border-radius: 25px;
+    scale: 0.8;
+}
+
+
+.showModalPartOne, .showModalPartTwo{
+	visibility: visible;
+}
+
 .currentModalContent h1, .newModalContent h1{
     margin-top: 15px;
     text-align: center;
@@ -32,7 +49,7 @@
     color: black;
 }
 
-/* modalCurrentWork */
+/* modal partie CurrentWork */
 .currentModalContent{
     display: flex;
     flex-direction: column;
@@ -46,37 +63,62 @@
     float: right;
 }
 
-.showPictures{
+.currentPictures{
     display: flex;
     flex-wrap: wrap;
-    gap: 15px;
-    margin: 55px 100px;
-    height: 355px;
+    gap: 10px;
+    width: 70%;
+    margin: auto;
 }
 
-.showPictures img {
-	width: 78px;
+.currentPictures figure{
+    position:relative;
+}
+
+.currentPictures img {
+	width: 80px;
     height: 104px;
+    margin-bottom: 5px;
+}
+
+.trashIconStyle, .arrowsIconStyle{
+    background-color: black;
+    border: 3px solid black;
+    border-radius: 4px;
+    font-size: smaller;
+    color: white;
+    top: 4px;
+    right:4px;
+    padding: 4px;
+    height: 9px;
+    width: 9px;
+    cursor: pointer;
     position: absolute;
 }
 
-.fa-regular:hover, .fa-solid:hover {
-    cursor: pointer;
-    opacity: 1.5;
+.arrowsIconStyle{
+    margin-right: 25px;
+    opacity: 0.1;
+}
+
+.arrowsIconStyle:hover{
+    opacity: 1;
+}
+
+.fa-solid:hover {
     transform: scale(1.4);
-    color: red;
 }
 
 .currentModalContent .actions{
-    margin-left: 95px;
     padding-top: 45px;
-    width: 430px;
-    gap: 25px;
     border-top:  #B3B3B3 1px solid;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin: auto;
+    width: 70%;
+    gap: 25px;
 }
 
 .openModalNewWork{
@@ -96,59 +138,64 @@
     cursor: pointer;
 }
 
-/* modal_newWork */
-.newModalContent{
+/* modal partie newWork */
+.modalNewWork .newModalContent{
     display: flex;
     flex-direction: column;
 }
 
-.directions{
+.newModalContent .directions{
     display: flex;
     justify-content: space-between;
     font-size: xx-large
-
 }
 
-.editionPhoto{
+.newModalContent .display_image{
     box-shadow:0 0 7px lightgray;
     background-color: #E8F1F6;
+    color: #444444;
     border-radius: 5px;
     height: 30%;
     width: 420px;
     margin: auto;
-    margin-top: 95px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 5px;
+    gap: 15px;
 }
 
-.editionPhoto i{
+.display_image i{
     margin-top: 20px;
-    font-size: 90px;
+    font-size: 85px;
     color: #B9C5CC;
 }
-.addImage{
+
+.display_image label{
     border-radius: 50px;
     background-color: #CBD6DC;
     width: 175px;
-    height: 35px;
+    height: 20px;
     font-size: large;
     color: #306685;
     text-align: center;
     padding: 10px;
 }
 
-.editionPhoto input{
-    opacity: 0;
+.display_image input {
+    height: 235px;
+    width: 420px;
+    position: absolute;
     cursor: pointer;
+    opacity: 0;
 }
 
-.editionPhoto .infoUpload{
-    margin-bottom: 20px;
-    color: #444444;
-}
+.display_image .newImage{
+    border-radius: 5px;
+    height: 212px;
+    width: 212px;
+    display: none;
 
+}
 .newModalContent form{
     display: flex;
     flex-direction: column;
@@ -157,16 +204,16 @@
     margin-bottom: 10px;
 }
 
-.newModalContent input{
+form input{
     color: black;
-    border: none;
+    /*border: none;*/
     box-shadow:0 0 7px lightgray;
     border-radius: 5px;
     height: 50px;
     width: 420px;
 }
 
-.validate_button{
+form .validate_button{
     border: gray;
     background-color: gray;
     color: white;
@@ -179,28 +226,12 @@
     margin: auto;
 }
 
-.validate_button:hover{
+form .validate_button:hover{
     background-color: #1D6154;
     cursor: pointer;
 }
 
-/*Colse and show modals*/
-.closeModalCurrentWork, .closeModalNewWork, .backBtn{
-    cursor: pointer;
-}
-
-.showModalCurrentWork{
-	opacity: 1;
-	visibility: visible;
-	transform: scale(1);
-	transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
-  }
-
-  .validationPtn{
+form .validationBtn{
     border-top: #B3B3B3 1px solid;
     padding-top: 25px;
-  }
-
-
-
-  
+}
