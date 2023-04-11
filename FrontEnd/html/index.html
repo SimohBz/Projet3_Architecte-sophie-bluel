@@ -15,20 +15,22 @@
 	<link rel="stylesheet" href="../css/modals.css">
 </head>
 <body>
-							<!--Ajout de la Banniere-->
+	<!--Mode Page d'édition: Ajout de la Banniere-->
 	<div id="banniere"class="banniere">
 		<i class="fa-sharp fa-regular fa-pen-to-square"></i>
 		<a href="#">Mode édition</a>
 		<button href="#">Publier Les Changements</button>
 	</div>
 <header>
-	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
+	<a href="./index.html">
+		<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
+	</a>
 	<nav>
 		<ul>
-			<li><a href="#">Projets</a></li>
-			<li><a href="#">Contact</a></li>
+			<li><a href="index.html#portfolio">Projets</a></li>
+			<li><a href="index.html#contact">Contact</a></li>
 			<li id="login"class="login"> <a href="../html/login.html">Login</a> </li>
-							<!--Ajout link Logout-->		
+			<!--Mode Page d'édition:Ajout link Logout-->		
 			<li id="logout" class="Logout"> <a href="../html/index.html">Logout</a> </li>
 			<li><img src="../assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
@@ -38,7 +40,7 @@
 	<section id="introduction">
 		<figure>
 			<img src="../assets/images/sophie-bluel.png" alt="">
-							<!--Ajout icon et link modifier-->			
+			<!--Mode Page d'édition: Ajout icon et link modifier (non implementé)-->			
 			<div id="modifierNon" class="modifierNon">
 				<i class="fa-sharp fa-regular fa-pen-to-square"></i>
 		    	<a class="#">Modifier</a>
@@ -52,7 +54,7 @@
 		</article>
 	</section>
 	<section id="portfolio">
-						<!--Ajout icon et link modifier-->
+		<!--Mode Page d'édition: Ajout icon et link modifier (implementé)+connect link Appel fenetre modale vue1-->
 		<div class="works_modification">
 			<h2>Mes Projets</h2>
 			<div id="modifier" class="modifier">
@@ -60,16 +62,16 @@
 				<a class="openModalCurrentWork">Modifier</a>
 			</div>
 		</div>	
-						<!--intégration des bts filtres dynamiquement-->		
+		<!--intégration des bts filtres dynamiquement : codé en index.js-->		
 		<div id="categories">
 			<button class="btn active" onclick="filter('All');clicked(this)">Tous</button>
 		</div>
-				<!--intégration de la galerie des traveaux dynamiquement-->		
+		<!--intégration de la galerie des traveaux dynamiquement: : codé en index.js-->		
 		<div class="gallery" id="works"> 
 		</div>
 	</section>
 	<section id="modal">
-		<!--Partie Current Work-->
+		<!--Partie Current Work (vue 1)-->
 		<div id="currentWork" class="modalCurrentWork">
 			<div class="currentModalContent">
 				<div><span class="closeModalCurrentWork">&times;</span></div>
@@ -82,7 +84,7 @@
 				</div>
 			</div>
 		</div>
-		 <!--Partie New Work-->
+		 <!--Partie New Work (vue 2)-->
 		<div id="newWork" class="modalNewWork">
 			<div class="newModalContent">
 				<div class="directions">
@@ -135,7 +137,7 @@
 		</ul>
 	</nav>
 </footer>
-	<script src="../js/index.js"></script>
-	<script src="../js/modals.js"></script>
+	<script src="../js/index.js"defer ></script>
+	<script src="../js/modals.js" defer ></script>
 </body>
 </html>

@@ -2,11 +2,11 @@
 let modalCurrentWork = document.querySelector(".modalCurrentWork");
 let openModalCurrentWork = document.querySelector(".openModalCurrentWork");
 let closeModalCurrentWork = document.querySelector(".closeModalCurrentWork");
+const token = localStorage.getItem("access_token");
 
 function showModalPartOne() {
   modalCurrentWork.classList.toggle("showModalPartOne");
 }
-
 openModalCurrentWork.addEventListener("click", showModalPartOne);
 closeModalCurrentWork.addEventListener("click", showModalPartOne);
 
@@ -30,31 +30,36 @@ const getPictures = () => {
       for (i in data) {
         let img = document.createElement("img");
         img.src = data[i].imageUrl;
-
         let figcaption = document.createElement("figcaption");
         figcaption.textContent = "éditer";
 
-        //Ajout de l'icon poubelle et changement
-        const trashIcon = document.createElement("trashIcon");
-        trashIcon.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
+        //Ajout de l'icon poubelle et changement photos
+        const trashIcon = document.createElement("div");
         trashIcon.classList.add("trashIconStyle");
+        trashIcon.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
 
-        const arrowsIcon = document.createElement("arrowsIcon");
+        const arrowsIcon = document.createElement("div");
+        arrowsIcon.classList.add("arrowsIconStyle");
         arrowsIcon.innerHTML =
           '<i class="fa-solid fa-arrows-up-down-left-right"></i>';
-        arrowsIcon.classList.add("arrowsIconStyle");
 
         let figure = document.createElement("figure");
         figure.appendChild(img);
         figure.appendChild(figcaption);
         figcaption.appendChild(trashIcon);
         figcaption.appendChild(arrowsIcon);
-
         currentPictures.appendChild(figure);
+      }
+      const trashIcons = document.querySelectorAll(".trashIconStyle");
+      for (let trashIcon of trashIcons) {
+        trashIcon.addEventListener("click", async (e) => {
+          const workId = await getId();
+          deleteProject(workId);
+        });
       }
     });
 };
-getPictures();
+document.addEventListener("DOMContentLoaded", getPictures);
 
 // visibilité de la modale partie newWork
 let modalNewWork = document.querySelector(".modalNewWork");
@@ -76,7 +81,6 @@ const infoUpload = displayImage.querySelector(".infoUpload");
 
 imageInput.addEventListener("change", function () {
   const file = this.files[0];
-
   if (file) {
     const reader = new FileReader();
     newImage.style.display = "block";
@@ -97,7 +101,6 @@ imageInput.addEventListener("change", function () {
 // Ajout du nouveau projet au database
 const addProject = (event) => {
   event.preventDefault();
-  const token = localStorage.getItem("access_token");
   const formData = new FormData();
   formData.append(
     "image",
@@ -120,7 +123,6 @@ const addProject = (event) => {
       Authorization: `Bearer ${token}`,
     },
 
-    body: JSON.stringify(Object.fromEntries(formData)),
     body: formData,
   })
     .then((res) => {
@@ -134,27 +136,36 @@ const addProject = (event) => {
 };
 
 //Suppression de projet
-
+const trashIcons = document.querySelectorAll(".trashIcon");
+console.log(trashIcons);
+if (trashIcons.length > 0) {
+  trashIcons.forEach((trashIcon) => {
+    if (trashIcon.id === "my-trash-icon") {
+      const myTrashIcon = trashIcon;
+      myTrashIcon.addEventListener("click", async (e) => {
+        const workId = await getId();
+        deleteProject(workId);
+      });
+    }
+  });
+}
 async function getId() {
   const response = await fetch("http://localhost:5678/api/works");
   const json = await response.json();
-  const workId = json.categoryId;
+  const workId = json[0].id;
+  return workId;
 }
-
 async function deleteProject(workId) {
-  const response = await fetch("http://localhost:5678/api/works/${workId})", {
+  const response = await fetch(`http://localhost:5678/api/works/${workId}`, {
     method: "DELETE",
     headers: {
       "content-type": "application/json;charset=utf-8",
       authorization: `Bearer ${token}`,
     },
   });
+  if (response.status === 200) {
+    console.log("Projet supprimé avec succès");
+  } else if (response.status === 401 || response.status === 500) {
+    console.log("Impossible de supprimer le projet");
+  }
 }
-
-if (response.status === 200) {
-  deleteProject(workId);
-} else if (response.status === 401 || 500) {
-  console.log("Imposible de supprimer");
-}
-
-trashIcon.addEventListener("click", deleteProject(workId));
