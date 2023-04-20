@@ -1,4 +1,4 @@
-// visibilité de la modale partie CurrentWork
+// Visibilité de la premiére partie de la modale
 let modalCurrentWork = document.querySelector(".modalCurrentWork");
 let openModalCurrentWork = document.querySelector(".openModalCurrentWork");
 let closeModalCurrentWork = document.querySelector(".closeModalCurrentWork");
@@ -17,51 +17,55 @@ function modalOneOutsideClick(e) {
 }
 window.addEventListener("click", modalOneOutsideClick);
 
-//Intégration des Traveaux d'Architecte
+// Affichage de projets actuels (CurrentWork)
 const urlPictures = "http://localhost:5678/api/works";
 const currentPictures = document.getElementById("currentPictures");
-const getPictures = () => {
+const getProject = () => {
   fetch(urlPictures)
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
-      localStorage.setItem("SauvegardeWorks", JSON.stringify(data));
-      for (i in data) {
+      console.log("Data = " + data.length);
+      for (let i in data) {
         let img = document.createElement("img");
         img.src = data[i].imageUrl;
         let figcaption = document.createElement("figcaption");
         figcaption.textContent = "éditer";
 
-        //Ajout de l'icon poubelle et changement photos
-        const trashIcon = document.createElement("div");
-        trashIcon.classList.add("trashIconStyle");
-        trashIcon.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
+        // Création de l'Icon de suppression
+        const trash = document.createElement("i");
+        trash.classList.add("fa-solid", "fa-trash-can", "trashIconStyle");
+        trash.setAttribute("data-id", data[i].id);
+        trash.addEventListener("click", function (event) {
+          event.preventDefault();
+          let id = this.dataset.id;
+          deleteProject(id);
+        });
 
-        const arrowsIcon = document.createElement("div");
-        arrowsIcon.classList.add("arrowsIconStyle");
-        arrowsIcon.innerHTML =
-          '<i class="fa-solid fa-arrows-up-down-left-right"></i>';
+        // Création de l'Icon d'agrandissement
+        const arrows = document.createElement("i");
+        arrows.classList.add(
+          "fa-solid",
+          "fa-arrows-up-down-left-right",
+          "arrowsIconStyle"
+        );
+        arrows.setAttribute("data-id", data[i].id);
+
+        //-------------------------------//
 
         let figure = document.createElement("figure");
         figure.appendChild(img);
         figure.appendChild(figcaption);
-        figcaption.appendChild(trashIcon);
-        figcaption.appendChild(arrowsIcon);
+        figcaption.appendChild(trash);
+        figcaption.appendChild(arrows);
         currentPictures.appendChild(figure);
-      }
-      const trashIcons = document.querySelectorAll(".trashIconStyle");
-      for (let trashIcon of trashIcons) {
-        trashIcon.addEventListener("click", async (e) => {
-          const workId = await getId();
-          deleteProject(workId);
-        });
       }
     });
 };
-document.addEventListener("DOMContentLoaded", getPictures);
+getProject();
 
-// visibilité de la modale partie newWork
+// Visibilité de la seconde partie de la modale
 let modalNewWork = document.querySelector(".modalNewWork");
 let openModalNewWork = document.querySelector(".openModalNewWork");
 let backToCurrentWork = document.querySelector(".backBtn");
@@ -73,7 +77,7 @@ function showModalPartTwo() {
 openModalNewWork.addEventListener("click", showModalPartTwo);
 backToCurrentWork.addEventListener("click", showModalPartTwo);
 
-// Ajout du nouveau projet à l'affichage
+// Ajout de nouveau projet à l'affichage (LOAD NewWork)
 const displayImage = document.getElementById("displayImage");
 const imageInput = document.getElementById("imageInput");
 const newImage = displayImage.querySelector(".newImage");
@@ -98,8 +102,8 @@ imageInput.addEventListener("change", function () {
   }
 });
 
-// Ajout du nouveau projet au database
-const addProject = (event) => {
+// Envoi de nouveau projet à la Database (POST)
+const postProject = (event) => {
   event.preventDefault();
   const formData = new FormData();
   formData.append(
@@ -122,11 +126,12 @@ const addProject = (event) => {
       accept: "application/json",
       Authorization: `Bearer ${token}`,
     },
-
     body: formData,
   })
     .then((res) => {
+      console.log(res);
       if (res.ok) {
+        showModalPartTwo();
         return res.json();
       }
     })
@@ -135,26 +140,11 @@ const addProject = (event) => {
     );
 };
 
-//Suppression de projet
-const trashIcons = document.querySelectorAll(".trashIcon");
-console.log(trashIcons);
-if (trashIcons.length > 0) {
-  trashIcons.forEach((trashIcon) => {
-    if (trashIcon.id === "my-trash-icon") {
-      const myTrashIcon = trashIcon;
-      myTrashIcon.addEventListener("click", async (e) => {
-        const workId = await getId();
-        deleteProject(workId);
-      });
-    }
-  });
-}
-async function getId() {
-  const response = await fetch("http://localhost:5678/api/works");
-  const json = await response.json();
-  const workId = json[0].id;
-  return workId;
-}
+/*const btnAdd = document.getElementById("btn-add");
+btnAdd.addEventListener("click", function () {});
+postProject();*/
+
+// Suppression de projet (DELETE)
 async function deleteProject(workId) {
   const response = await fetch(`http://localhost:5678/api/works/${workId}`, {
     method: "DELETE",
@@ -163,8 +153,11 @@ async function deleteProject(workId) {
       authorization: `Bearer ${token}`,
     },
   });
-  if (response.status === 200) {
+  if (response.status === 204) {
     console.log("Projet supprimé avec succès");
+    const divPicture = document.getElementById("currentPictures");
+    divPicture.innerHTML = "";
+    await getProject();
   } else if (response.status === 401 || response.status === 500) {
     console.log("Impossible de supprimer le projet");
   }

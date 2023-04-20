@@ -1,4 +1,4 @@
-//récuperation des Traveaux d'Architecte de l'API
+//récuperation des Traveaux d'Architecte de l'API (FETCH)
 const urlWorks = "http://localhost:5678/api/works";
 const works = document.getElementById("works");
 const getWorks = () => {
@@ -28,7 +28,7 @@ const getWorks = () => {
 };
 getWorks();
 
-//récuperation des Categories de l'API
+//récuperation des Categories de l'API (FETCH)
 const urlCategories = "http://localhost:5678/api/categories";
 const categories = document.getElementById("categories");
 const getCategories = () => {
@@ -52,7 +52,7 @@ const getCategories = () => {
 };
 getCategories();
 
-//création des filters en dynamique
+//création des filters en dynamique (FOR IF IF_ELSE)
 function filter(selected) {
   savedDataWorks = JSON.parse(localStorage.getItem("SauvegardeWorks"));
 
@@ -100,8 +100,8 @@ function clicked(sl) {
   sl.classList.add("active");
 }
 
-//display: banniére, link Logout et links modifier
-//display none: link Login et Filters
+//Page Edition 
+/* Display: banniére, links Logout et modifie --- Display None: link Login et Filters)*/
 
 let log = localStorage.getItem("access_token");
 if (log != null) {

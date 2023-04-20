@@ -38,19 +38,19 @@ const validateInputs = () => {
   passwordValue = password.value.trim();
 
   if (emailValue === "") {
-    setError(email, "Email is required");
+    setError(email, "Rensegnez votre adresse Email !");
   } else if (!isValidEmail(emailValue)) {
-    setError(email, "Erreur dans l'identifiant");
+    setError(email, "Erreur dans l'identifiant !");
   } else {
     setSuccess(email);
   }
 
   if (passwordValue === "") {
-    setError(password, "Password is required");
+    setError(password, "Rensegnez votre Mot de Passe");
   } else if (passwordValue.length >= 5 && passwordValue.length <= 15) {
     setSuccess(password);
   } else {
-    setError(password, "Erreur dans le mot de passe");
+    setError(password, "Erreur dans le mot de passe !");
   }
 };
 //Récuperation du Token d'authentification

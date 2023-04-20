@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 	<meta charset="UTF-8">
-	<title>Sophie Bluel - Architecte d'intérieur homepage</title>
+	<title>Sophie Bluel - Architecte d'intérieur Home-Page</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -99,7 +99,7 @@
 					<p class="infoUpload">jpg, png: 4mo Max</p>
 					<img src="" class="newImage">
 				</div>
-				<form action="#" method="post">
+				<form>
 					<label for="title">Titre</label>
 					<input type="text" name="title" id="title">
 					<label for="category">Catégorie</label>
@@ -109,7 +109,9 @@
 						<option data-id="2" value="Appartements"/>
 						<option data-id="3" value="Hotels & restaurants"/>
 					</datalist>
-					<div class="validationBtn"><button class="validate_button" onclick="addProject(event) ">Valider</button>
+					<div class="validationBtn">
+						<button class="validate_button" onclick="postProject(event) ">Valider</button>
+						<!--<button id="btn-add"class="validate_button">Valider</button>-->
 					</div>
 				</form>
 			</div>

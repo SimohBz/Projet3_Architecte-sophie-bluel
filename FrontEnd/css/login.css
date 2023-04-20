@@ -76,7 +76,7 @@ header a {
 	flex-direction: column;
 	width: 390px;
 	margin: 20vh auto  auto;
-	gap: 35px;
+	gap: 40px;
 }
 
 #form h1{
@@ -94,6 +94,12 @@ header a {
 	display: block;
 	margin: auto;
 }
+
+#form button:hover{
+	cursor: pointer;
+	transform: scale(1.05);
+}
+
 
 #form a{
 	color: black;
