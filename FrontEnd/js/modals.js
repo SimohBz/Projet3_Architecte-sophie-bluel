@@ -1,14 +1,12 @@
-// Visibilité de la premiére partie de la modale
+// Visibilité de la premiére partie de la modale (travaux en cours)
 let modalCurrentWork = document.querySelector(".modalCurrentWork");
 let openModalCurrentWork = document.querySelector(".openModalCurrentWork");
-let closeModalCurrentWork = document.querySelector(".closeModalCurrentWork");
 const token = localStorage.getItem("access_token");
 
 function showModalPartOne() {
   modalCurrentWork.classList.toggle("showModalPartOne");
 }
 openModalCurrentWork.addEventListener("click", showModalPartOne);
-closeModalCurrentWork.addEventListener("click", showModalPartOne);
 
 function modalOneOutsideClick(e) {
   if (e.target === modalCurrentWork) {
@@ -113,10 +111,8 @@ const postProject = (event) => {
   );
   formData.append("title", document.querySelector('input[name="title"]').value);
 
-  let categoryList = document.getElementById("category").value;
-  let categoryId = document.querySelector(
-    `datalist option[value="${categoryList}"]`
-  ).dataset.id;
+  selectedCategory = document.querySelector("#category").options.selectedIndex;
+  categoryId = document.querySelector("#category")[selectedCategory].dataset.id;
 
   formData.append("category", categoryId);
 
@@ -131,6 +127,11 @@ const postProject = (event) => {
     .then((res) => {
       console.log(res);
       if (res.ok) {
+        document.querySelector("#currentPictures").innerHTML = "";
+        getProject();
+        document.getElementById("works").innerHTML = "";
+        getWorks();
+
         showModalPartTwo();
         return res.json();
       }
@@ -140,9 +141,8 @@ const postProject = (event) => {
     );
 };
 
-/*const btnAdd = document.getElementById("btn-add");
-btnAdd.addEventListener("click", function () {});
-postProject();*/
+const btnAdd = document.getElementById("btn-add");
+btnAdd.addEventListener("click", postProject);
 
 // Suppression de projet (DELETE)
 async function deleteProject(workId) {
@@ -158,7 +158,34 @@ async function deleteProject(workId) {
     const divPicture = document.getElementById("currentPictures");
     divPicture.innerHTML = "";
     await getProject();
+    document.getElementById("works").innerHTML = "";
+    getWorks();
   } else if (response.status === 401 || response.status === 500) {
     console.log("Impossible de supprimer le projet");
   }
+}
+
+//Gérer l'affichage des modals et le rafraîchissement des pages en automatique
+
+modal = document.querySelector("#currentWork");
+
+displayModalOne = document.querySelector("#modifier > a");
+displayModalOne.addEventListener("click", (e) => {
+  modal.style.display = "block";
+});
+
+hideModalOne = document.querySelector("#hideModalOne");
+hideModalOne.addEventListener("click", (e) => {
+  modal.style.display = "none";
+});
+
+closeModalButton = document.querySelector("#closeModal");
+closeModalButton.addEventListener("click", (e) => {
+  history.go();
+});
+
+
+function formReset(element){
+  element.reset
+
 }

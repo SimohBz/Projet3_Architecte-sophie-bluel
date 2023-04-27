@@ -96,11 +96,17 @@ function filter(selected) {
   }
 }
 
-function clicked(sl) {
-  sl.classList.add("active");
+function clicked(selection) {
+  selection.classList.add("active");
 }
 
-//Page Edition 
+const filterAll = document.getElementById("filterAll");
+filterAll.addEventListener("click", filterSelection);
+
+function filterSelection() {
+  filter("All");
+}
+//Page Edition
 /* Display: banniére, links Logout et modifie --- Display None: link Login et Filters)*/
 
 let log = localStorage.getItem("access_token");
@@ -122,8 +128,10 @@ if (log != null) {
 
   const modifierNon = document.getElementById("modifierNon");
   modifierNon.style.display = "block";
+} else {
+  const modifier = document.getElementById("modifier");
+  modifier.style.display = "none";
 }
-
 logout.addEventListener("click", function () {
   localStorage.clear();
 });

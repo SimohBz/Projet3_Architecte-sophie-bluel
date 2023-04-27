@@ -21,8 +21,8 @@
     margin: 15% auto;
     padding: 20px;
     border:  #B3B3B3 1px solid;
-    width: 630px;
-    height: 700px;
+    width: 635px;
+    height: 715px;
     border-radius: 10px;
     overflow: auto;
 }
@@ -203,14 +203,14 @@
 .newModalContent form{
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 30px;
     margin: auto;
     margin-bottom: 10px;
 }
 
-form input{
+form input, form select{
     color: black;
-    /*border: none;*/
+    border: none;
     box-shadow:0 0 7px lightgray;
     border-radius: 5px;
     height: 50px;

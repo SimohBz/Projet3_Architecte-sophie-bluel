@@ -57,16 +57,16 @@
 		<!--Mode Page d'édition: Ajout icon et link modifier (implementé)+connect link Appel fenetre modale vue1-->
 		<div class="works_modification">
 			<h2>Mes Projets</h2>
-			<div id="modifier" class="modifier">
+			<div id="modifier" class="displayModalOne">
 				<i class="fa-sharp fa-regular fa-pen-to-square"></i>
 				<a class="openModalCurrentWork">Modifier</a>
 			</div>
 		</div>	
-		<!--intégration des bts filtres dynamiquement : codé en index.js-->		
+		<!--intégration des bts filtres dynamiquement : codé en js-->		
 		<div id="categories">
-			<button class="btn active" onclick="filter('All');clicked(this)">Tous</button>
+			<button class="btn active" id="filterAll">Tous</button>
 		</div>
-		<!--intégration de la galerie des traveaux dynamiquement: : codé en index.js-->		
+		<!--intégration de la galerie des traveaux dynamiquement: : codé en js-->		
 		<div class="gallery" id="works"> 
 		</div>
 	</section>
@@ -74,13 +74,13 @@
 		<!--Partie Current Work (vue 1)-->
 		<div id="currentWork" class="modalCurrentWork">
 			<div class="currentModalContent">
-				<div><span class="closeModalCurrentWork">&times;</span></div>
+				<div><span id="hideModalOne" class="closeModalCurrentWork">&times;</span></div>
 				<h1 class="title">Galerie Photos</h1>
 				<div class="currentPictures" id="currentPictures">
 				</div>
 				<div class="actions">
 					<button class="openModalNewWork" id="openModalNewWork">Ajouter une Photo</button>
-					<button class="delete_button" onclick="deleteAllWorks()">Supprimer la Galerie</button>
+					<button class="delete_button" id="deleteAllWorks">Supprimer la Galerie</button>
 				</div>
 			</div>
 		</div>
@@ -89,7 +89,7 @@
 			<div class="newModalContent">
 				<div class="directions">
 					<span class="backBtn">&#x2190;</span>
-					<span onclick="history.go()" class="closeModalNewWork">&times;</span>
+					<span id="closeModal" class="closeModalNewWork">&times;</span>
 				</div>
 				<H1 class="title">Ajout Photo</H1>
 				<div class="display_image" id="displayImage">
@@ -101,17 +101,16 @@
 				</div>
 				<form>
 					<label for="title">Titre</label>
-					<input type="text" name="title" id="title">
+					<input type="text" name="title" id="title" required>
 					<label for="category">Catégorie</label>
-					<input type="text" name="category" id="category" list="categoryList">
-					<datalist id="categoryList">
-						<option data-id="1" value="Objets"/>
-						<option data-id="2" value="Appartements"/>
-						<option data-id="3" value="Hotels & restaurants"/>
-					</datalist>
+					<select id="category">
+						<option value>-------------------- Veuillez choisir une catégorie -----------------------</option>
+						<option data-id="1" value="Objets"/>Objets</option>
+						<option data-id="2" value="Appartements"/>Appartements</option>
+						<option data-id="3" value="Hotels & restaurants"/>Hotels & restaurants</option>
+					</select>
 					<div class="validationBtn">
-						<button class="validate_button" onclick="postProject(event) ">Valider</button>
-						<!--<button id="btn-add"class="validate_button">Valider</button>-->
+						<button id="btn-add" class="validate_button">Valider</button>
 					</div>
 				</form>
 			</div>
